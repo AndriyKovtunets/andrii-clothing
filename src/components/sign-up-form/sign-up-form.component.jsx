@@ -28,7 +28,7 @@ const SignUpForm = () => {
 		setFormField(defaultFormField);
 	};
 
-	const handleSubmit = async event => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		if (password !== confirmPassword) {
@@ -42,7 +42,8 @@ const SignUpForm = () => {
 				password
 			);
 
-			await createUserDocumentFromAuth(user, { displayName });
+			await createUserDocumentFromAuth(user, { displayName, password });
+			console.log(`pasword: ${password}`);
 			resetFormFields();
 			//	setCurrentUser(user);
 		} catch (e) {
@@ -53,7 +54,7 @@ const SignUpForm = () => {
 			}
 		}
 	};
-	const handleChange = event => {
+	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setFormField({ ...formField, [name]: value });
 	};

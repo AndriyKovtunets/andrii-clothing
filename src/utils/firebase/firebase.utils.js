@@ -86,13 +86,16 @@ export const createUserDocumentFromAuth = async (
 	//create /set the document with the data from userAuth in my collection
 	if (!userSnapshot.exists()) {
 		const { displayName, email } = userAuth;
+		const { password } = additionalInformation;
 		const createdAt = new Date();
+		console.log(`password: ${password}`);
 
 		try {
 			await setDoc(userDocRef, {
 				displayName,
 				email,
 				createdAt,
+				password,
 				...additionalInformation,
 			});
 		} catch (error) {
