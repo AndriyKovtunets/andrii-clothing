@@ -18,13 +18,12 @@ const persistConfig = {
 	//blacklist: ['user'],
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-//root-reducer
-
 const sagaMiddleware = createSagaMiddleware();
 
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const middleWares = [
-	process.env.NODE_ENV === 'development' && logger,
+	process.env.NODE_ENV !== 'production' && logger,
 	sagaMiddleware,
 ].filter(Boolean);
 
