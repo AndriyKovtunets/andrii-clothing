@@ -1,3 +1,4 @@
+//"start": "set PORT=3000 && react-scripts start",
 {
 	"name": "andrii-clothing",
 	"version": "0.1.0",
